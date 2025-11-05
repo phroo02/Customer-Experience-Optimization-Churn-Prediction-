@@ -15,10 +15,11 @@ st.set_page_config(page_title="Customer Experience Executive Dashboard", layout=
 # -------------------------------
 @st.cache_data
 def load_table(table):
-    conn = sqlite3.connect("./../sql/retail_customer_experience.db")
+    conn = sqlite3.connect("sql/retail_customer_experience.db")
     df = pd.read_sql_query(f"SELECT * FROM {table};", conn)
     conn.close()
     return df
+
 
 df_cleaned = load_table("customer_360_cleaned")
 df_enriched = load_table("customer_360_enriched")
